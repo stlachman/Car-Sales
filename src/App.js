@@ -1,21 +1,23 @@
 import React from "react";
 import { connect } from "react-redux";
-import { addItem } from "../src/actions/actions";
+import { addItem, removeItem } from "../src/actions/actions";
 
 import Header from "./components/Header";
 import AddedFeatures from "./components/AddedFeatures";
 import AdditionalFeatures from "./components/AdditionalFeatures";
 import Total from "./components/Total";
 
-const App = ({ car, store, additionalPrice, addItem }) => {
-  const removeFeature = item => {
+const App = ({ car, store, additionalPrice, addItem, removeItem }) => {
+  const removeFeature = (e, item) => {
     // dispatch an action here to remove an item
+    e.preventDefault();
+
+    removeItem(item.id);
   };
 
   const buyItem = (e, item) => {
     // dipsatch an action here to add an item
     e.preventDefault();
-    console.log(item);
     addItem(item);
   };
 
@@ -23,7 +25,7 @@ const App = ({ car, store, additionalPrice, addItem }) => {
     <div className="boxes">
       <div className="box">
         <Header car={car} />
-        <AddedFeatures car={car} />
+        <AddedFeatures car={car} removeFeature={removeFeature} />
       </div>
       <div className="box">
         <AdditionalFeatures buyItem={buyItem} store={store} />
@@ -43,5 +45,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { addItem }
+  { addItem, removeItem }
 )(App);
