@@ -4,7 +4,7 @@ const AddedFeature = props => {
   return (
     <li>
       <button
-        onClick={e => props.removeFeature(e, props.feature)}
+        onClick={() => props.removeFeature(props.feature)}
         className="button"
       >
         X

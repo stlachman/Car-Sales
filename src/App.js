@@ -8,15 +8,13 @@ import AdditionalFeatures from "./components/AdditionalFeatures";
 import Total from "./components/Total";
 
 const App = ({ car, store, additionalPrice, addItem, removeItem }) => {
-  const removeFeature = (e, item) => {
+  const removeFeature = item => {
     // dispatch an action here to remove an item
-    e.preventDefault();
     removeItem(item);
   };
 
-  const buyItem = (e, item) => {
+  const buyItem = item => {
     // dipsatch an action here to add an item
-    e.preventDefault();
     addItem(item);
   };
 
