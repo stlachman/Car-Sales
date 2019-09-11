@@ -11,8 +11,7 @@ const App = ({ car, store, additionalPrice, addItem, removeItem }) => {
   const removeFeature = (e, item) => {
     // dispatch an action here to remove an item
     e.preventDefault();
-
-    removeItem(item.id);
+    removeItem(item);
   };
 
   const buyItem = (e, item) => {

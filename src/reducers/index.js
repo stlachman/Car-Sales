@@ -6,6 +6,7 @@ const reducer = (state = initialState, action) => {
     case ADD_ITEM:
       return {
         ...state,
+        additionalPrice: (state.additionalPrice += action.payload.price),
         car: {
           ...state.car,
           features: [...state.car.features, action.payload]
@@ -14,11 +15,12 @@ const reducer = (state = initialState, action) => {
     case REMOVE_ITEM:
       return {
         ...state,
+        additionalPrice: (state.additionalPrice -= action.payload.price),
         car: {
           ...state.car,
           features: [
             ...state.car.features.filter(
-              feature => feature.id !== action.payload
+              feature => feature.id !== action.payload.id
             )
           ]
         }
